@@ -42,4 +42,12 @@ class BinarySearchTest {
         Assertions.assertTrue(searchResult.isFound());
         Assertions.assertEquals(manyElementsSeq[searchResult.getPosition()], key);
     }
+
+    @Test void searchMiddleKeyInManyElementSeqWithoutKeyInIt() {
+        int key = 4;
+        var searchResult = binarySearch.search(key, manyElementsSeq);
+
+        Assertions.assertTrue(searchResult.isFound());
+        Assertions.assertEquals(manyElementsSeq[searchResult.getPosition()], key);
+    }
 }
