@@ -17,6 +17,7 @@ class BinarySearchTest {
     static final int[] oneElementSeq = {1};
     static final int[] manyPositiveElementsSeq = {2, 3, 4, 5, 6};
     static final int[] manyNegativeElementsSeq = {-20, -15, -10, -5, 0};
+    static final int[] manyUnsortedElementsSeq = {-20, 15, -10, 5, 0};
 
     static final BinarySearch binarySearch = BinarySearch.create();
 
@@ -100,5 +101,13 @@ class BinarySearchTest {
         assertThrows(IllegalArgumentException.class, () -> {
             binarySearch.search(key, nullSeq);
         });
+    }
+
+    @Test public void searchMissingKeyInManyUnsortedElementSeqWithoutKeyInIt() {
+        int key = 8;
+        var searchResult = binarySearch.search(key, manyUnsortedElementsSeq);
+
+        assertFalse(searchResult.isFound());
+        assertThat(ELEMENT_NOT_FOUND, is(searchResult.getPosition()));
     }
 }
