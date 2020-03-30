@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class BinarySearchTest {
 
     static final int[] oneElementSeq = {1};
+    static final int[] manyElementsSeq = {2, 3, 4, 5, 6};
     static final BinarySearch binarySearch = BinarySearch.create();
 
     @Test void searchKeyInOneElementSeqWithKeyInIt() {
@@ -24,5 +25,13 @@ class BinarySearchTest {
 
         Assertions.assertFalse(searchResult.isFound());
         Assertions.assertEquals(searchResult.getPosition(), -1);
+    }
+
+    @Test void searchFirstKeyInManyElementSeqWithoutKeyInIt() {
+        int key = 2;
+        var searchResult = binarySearch.search(key, manyElementsSeq);
+
+        Assertions.assertTrue(searchResult.isFound());
+        Assertions.assertEquals(manyElementsSeq[searchResult.getPosition()], key);
     }
 }
