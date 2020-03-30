@@ -50,4 +50,12 @@ class BinarySearchTest {
         Assertions.assertTrue(searchResult.isFound());
         Assertions.assertEquals(manyElementsSeq[searchResult.getPosition()], key);
     }
+
+    @Test void searchMissingKeyInManyElementSeqWithoutKeyInIt() {
+        int key = 8;
+        var searchResult = binarySearch.search(key, manyElementsSeq);
+
+        Assertions.assertFalse(searchResult.isFound());
+        Assertions.assertEquals(searchResult.getPosition(), -1);
+    }
 }
