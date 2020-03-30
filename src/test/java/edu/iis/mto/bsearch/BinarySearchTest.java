@@ -9,6 +9,7 @@ class BinarySearchTest {
 
     static final int ELEMENT_NOT_FOUND = -1;
 
+    static final int[] nullSeq = null;
     static final int[] emptySeq = {};
     static final int[] oneElementSeq = {1};
     static final int[] manyPositiveElementsSeq = {2, 3, 4, 5, 6};
@@ -76,6 +77,14 @@ class BinarySearchTest {
 
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             binarySearch.search(key, emptySeq);
+        });
+    }
+
+    @Test public void searchKeyInNullSeq() {
+        int key = 10;
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            binarySearch.search(key, nullSeq);
         });
     }
 }
