@@ -110,4 +110,12 @@ class BinarySearchTest {
         assertFalse(searchResult.isFound());
         assertThat(ELEMENT_NOT_FOUND, is(searchResult.getPosition()));
     }
+    
+    @Test public void searchMiddleKeyInManyUnsortedElementSeqWithKeyInIt() {
+        int key = 0;
+        var searchResult = binarySearch.search(key, manyUnsortedElementsSeq);
+
+        assertFalse(searchResult.isFound());
+        assertThat(ELEMENT_NOT_FOUND, is(searchResult.getPosition()));
+    }
 }
