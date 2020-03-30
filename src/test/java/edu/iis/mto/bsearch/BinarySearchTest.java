@@ -17,4 +17,12 @@ class BinarySearchTest {
         Assertions.assertTrue(searchResult.isFound());
         Assertions.assertEquals(oneElementSeq[searchResult.getPosition()], key);
     }
+
+    @Test void searchKeyInOneElementSeqWithoutKeyInIt() {
+        int key = 2;
+        var searchResult = binarySearch.search(key, oneElementSeq);
+
+        Assertions.assertFalse(searchResult.isFound());
+        Assertions.assertEquals(searchResult.getPosition(), -1);
+    }
 }
