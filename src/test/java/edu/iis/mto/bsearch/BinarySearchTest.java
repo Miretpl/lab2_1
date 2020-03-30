@@ -22,9 +22,11 @@ class BinarySearchTest {
 
     @Test public void searchKeyInOneElementSeqWithKeyInIt() {
         int key = 1;
+        int position = 0;
         var searchResult = binarySearch.search(key, oneElementSeq);
 
         assertTrue(searchResult.isFound());
+        assertThat(position, is(searchResult.getPosition()));
         assertThat(key, is(oneElementSeq[searchResult.getPosition()]));
     }
 
@@ -36,27 +38,33 @@ class BinarySearchTest {
         assertThat(ELEMENT_NOT_FOUND, is(searchResult.getPosition()));
     }
 
-    @Test public void searchFirstKeyInManyPositiveElementSeqWithoutKeyInIt() {
+    @Test public void searchFirstKeyInManyPositiveElementSeqWithKeyInIt() {
         int key = 2;
+        int position = 0;
         var searchResult = binarySearch.search(key, manyPositiveElementsSeq);
 
         assertTrue(searchResult.isFound());
+        assertThat(position, is(searchResult.getPosition()));
         assertThat(key, is(manyPositiveElementsSeq[searchResult.getPosition()]));
     }
 
-    @Test public void searchLastKeyInManyPositiveElementSeqWithoutKeyInIt() {
+    @Test public void searchLastKeyInManyPositiveElementSeqWithKeyInIt() {
         int key = 6;
+        int position = 4;
         var searchResult = binarySearch.search(key, manyPositiveElementsSeq);
 
         assertTrue(searchResult.isFound());
+        assertThat(position, is(searchResult.getPosition()));
         assertThat(key, is(manyPositiveElementsSeq[searchResult.getPosition()]));
     }
 
-    @Test public void searchMiddleKeyInManyPositiveElementSeqWithoutKeyInIt() {
+    @Test public void searchMiddleKeyInManyPositiveElementSeqWithKeyInIt() {
         int key = 4;
+        int position = 2;
         var searchResult = binarySearch.search(key, manyPositiveElementsSeq);
 
         assertTrue(searchResult.isFound());
+        assertThat(position, is(searchResult.getPosition()));
         assertThat(key, is(manyPositiveElementsSeq[searchResult.getPosition()]));
     }
 
@@ -68,11 +76,13 @@ class BinarySearchTest {
         assertThat(ELEMENT_NOT_FOUND, is(searchResult.getPosition()));
     }
 
-    @Test public void searchMiddleKeyInManyNegativeElementSeqWithoutKeyInIt() {
+    @Test public void searchMiddleKeyInManyNegativeElementSeqWithKeyInIt() {
         int key = -10;
+        int position = 2;
         var searchResult = binarySearch.search(key, manyNegativeElementsSeq);
 
         assertTrue(searchResult.isFound());
+        assertThat(position, is(searchResult.getPosition()));
         assertThat(key, is(manyNegativeElementsSeq[searchResult.getPosition()]));
     }
 
