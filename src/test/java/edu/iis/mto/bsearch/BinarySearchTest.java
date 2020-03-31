@@ -18,6 +18,7 @@ class BinarySearchTest {
     static final int[] manyPositiveElementsSeq = {2, 3, 4, 5, 6};
     static final int[] manyNegativeElementsSeq = {-20, -15, -10, -5, 0};
     static final int[] manyUnsortedElementsSeq = {-20, 15, -10, 5, 0};
+    static final int[] manyDuplicatedElementsSeq = {-20, 15, 15, -10, 5, 5, 5, 5, 5, 0};
 
     static final BinarySearch binarySearch = BinarySearch.create();
 
@@ -110,10 +111,18 @@ class BinarySearchTest {
         assertFalse(searchResult.isFound());
         assertThat(ELEMENT_NOT_FOUND, is(searchResult.getPosition()));
     }
-    
+
     @Test public void searchMiddleKeyInManyUnsortedElementSeqWithKeyInIt() {
         int key = 0;
         var searchResult = binarySearch.search(key, manyUnsortedElementsSeq);
+
+        assertFalse(searchResult.isFound());
+        assertThat(ELEMENT_NOT_FOUND, is(searchResult.getPosition()));
+    }
+
+    @Test public void searchMiddleKeyInManyDuplicatedElementSeqWithKeyInIt() {
+        int key = 3;
+        var searchResult = binarySearch.search(key, manyDuplicatedElementsSeq);
 
         assertFalse(searchResult.isFound());
         assertThat(ELEMENT_NOT_FOUND, is(searchResult.getPosition()));
