@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.not;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -18,7 +19,7 @@ class BinarySearchTest {
     static final int[] manyPositiveElementsSeq = {2, 3, 4, 5, 6};
     static final int[] manyNegativeElementsSeq = {-20, -15, -10, -5, 0};
     static final int[] manyUnsortedElementsSeq = {-20, 15, -10, 5, 0};
-    static final int[] manyDuplicatedElementsSeq = {-20, 15, 15, -10, 5, 5, 5, 5, 5, 0};
+    static final int[] manyDuplicatedElementsSeq = {15, 15, -10, 5, 5, 5};
 
     static final BinarySearch binarySearch = BinarySearch.create();
 
@@ -126,5 +127,14 @@ class BinarySearchTest {
 
         assertFalse(searchResult.isFound());
         assertThat(ELEMENT_NOT_FOUND, is(searchResult.getPosition()));
+    }
+
+    @Test public void searchKeyInManyDuplicatedElementSeqWithKeyInIt() {
+        int key = 5;
+        int position = 3;
+        var searchResult = binarySearch.search(key, manyDuplicatedElementsSeq);
+
+        assertTrue(searchResult.isFound());
+        assertThat(position, is(not(searchResult.getPosition())));
     }
 }
